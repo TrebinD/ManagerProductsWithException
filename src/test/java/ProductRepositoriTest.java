@@ -10,6 +10,7 @@ class ProductRepositoriTest {
     Product smartphone2 = new Smartphone(4, "m30", 350, "Motorola");
     Product book3 = new Book(5, "Воина и мир", 150, "Л.Н. Толстой");
     Product smartphone3 = new Smartphone(6, "54", 450, "Samsung");
+    Product smartphone4 = new Smartphone(1, "54", 450, "Samsung");
 
     @Test
     public void addProduct() {
@@ -168,7 +169,7 @@ class ProductRepositoriTest {
         manager.add(book3);
 
         assertThrows(AlreadyExistsException.class, () -> {
-            manager.add(book3);
+            manager.add(smartphone4);
         });
     }
 
