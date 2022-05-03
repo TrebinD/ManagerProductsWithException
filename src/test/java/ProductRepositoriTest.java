@@ -159,4 +159,32 @@ class ProductRepositoriTest {
         });
     }
 
+    @Test
+    public void addProductWithNotNewId() {
+
+        ProductManager manager = new ProductManager(productRepositori);
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(book3);
+
+        assertThrows(AlreadyExistsException.class, () -> {
+            manager.add(book3);
+        });
+    }
+
+    @Test
+    public void addProductWithNewId() {
+
+        ProductManager manager = new ProductManager(productRepositori);
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(book3);
+
+        Product[] actual = {book1, book2, book3};
+        Product[] expected = manager.repository.findAll();
+
+        assertArrayEquals(actual, expected);
+
+    }
+
 }

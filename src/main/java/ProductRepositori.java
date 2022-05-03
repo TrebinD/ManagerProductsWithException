@@ -3,6 +3,9 @@ public class ProductRepositori {
     protected Product[] products = new Product[0];
 
     public Product[] addProduct(Product product) {
+        if (findById(product.id) == products) {
+            throw new AlreadyExistsException("Товар с таким ID: " + product.id + "уже есть");
+        }
         int length = products.length + 1;
         Product[] tmp = new Product[length];
         for (int i = 0; i < products.length; i++) {

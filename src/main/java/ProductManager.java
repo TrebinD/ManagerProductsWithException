@@ -5,7 +5,6 @@ public class ProductManager {
         this.repository = repository;
     }
 
-
     public void add(Product product) {
         repository.addProduct(product);
     }
